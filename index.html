@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>陳慶安的自我介紹</title>
+		<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+		<script>
+		// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyCcOHUawK1mIwoeMMQx4ti6tHfGBjsu2yc",
+				authDomain: "homework3-1fca1.firebaseapp.com",
+				databaseURL: "https://homework3-1fca1.firebaseio.com",
+				storageBucket: "homework3-1fca1.appspot.com",
+				messagingSenderId: "40173602838"
+			};
+			firebase.initializeApp(config);
+			function alertFunction() {
+				alert("您的訊息已經傳達到慶安的心中了＾＿＾");
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="index.css">
+	</head>
+	<body>
+		<div id="sitebody"> 
+			<div id="header">
+				<div id="ZZZ">
+					<div id="me" style="background-image:url('https://firebasestorage.googleapis.com/v0/b/homework3-1fca1.appspot.com/o/texts%2Fimage1.png?alt=media&token=8b0ba11a-9a40-4b49-af6e-6aba2669db0d'); background-size:contain">
+					</div>
+					<div id="intro">
+						<p style="font-size:50px">
+						陳慶安的履歷
+						</p>
+						<p style="font-size:20px;">
+						國貿碩二104351033
+						</p>
+					</div>
+				</div>
+			</div> 
+			<div id="sidebar">
+				<div id="content">
+					<div id="cube1a">料理
+					</div>
+					<div id="cube1b">
+						<ul>
+							<li>喜歡大口吃、大口享受</li>
+							<li>酸甜苦辣鹹中日韓非泰越英美歐俄，只要是好吃的食物來者不拒！</li>
+							<li>歡迎找我大吃特吃</li>
+						</ul>
+					</div>
+					<div id="pic1" style="background-image:url('https://firebasestorage.googleapis.com/v0/b/homework3-1fca1.appspot.com/o/texts%2Fimage2.jpg?alt=media&token=ad3ac1fa-4f35-4e3b-b9ef-94d3b093310d'); background-size:contain">
+					</div>
+					<div id="cube2a">攝影
+					</div>
+					<div id="cube2b">
+						<ul>
+							<li>擅長平面靜物攝影</li>
+							<li>Ｐhotoshop修圖</li>
+						</ul>
+					</div>
+					<div id="pic2" style="background-image:url('https://firebasestorage.googleapis.com/v0/b/homework3-1fca1.appspot.com/o/texts%2Fimage3.jpg?alt=media&token=7f2865cd-3734-460a-adcf-a96e36c3bc1a'); background-size:contain">
+					</div>
+					<div id="cube3a">手繪
+					</div>
+					<div id="cube3b">
+						<ul>
+							<li>素描、水彩、粉彩、壓克力、水墨</li>
+							<li>Illustrator向量繪圖</li>
+						</ul>
+					</div>
+					<div id="pic3" style="background-image:url('https://firebasestorage.googleapis.com/v0/b/homework3-1fca1.appspot.com/o/texts%2Fimage4.jpg?alt=media&token=20665944-2a84-4357-b168-766f77fd07d5'); background-size:contain">
+					</div>
+				    <h2 style="font-size:30px; color:dimgray">還有什麼話想跟慶安說的嗎？趕快在底下留言給我<br></h2>
+					<div id="cube4a">
+					</div>
+					<!--留言板-->
+					<div id="cube4b">
+							<form id="textBoard">
+								<h3><lable for="name">姓名</lable></h3>
+								<input id="name" type="text" placeholder="你的名字是？" style="width:560px; height:10px;"><br>
+								<h3><lable for="text">留言我家</lable></h3>
+								<input id="msgText" type="text" placeholder="想對慶安說什麼？" style="width:560px; height:100px;"><br>
+							</form>
+							<button id="sendBtn" onclick="alertFunction()" >送出去囉</button>
+							<script>
+								document.getElementById("sendBtn").addEventListener("click", function(){
+								var name = document.getElementById("name").value;
+								var msgText = document.getElementById("msgText").value;
+								var storageRef = firebase.storage().ref();
+								var storedMsg = name+":"+msgText;
+								var myhomeworkRef = storageRef.child('secret-message-104351033_'+new Date().getTime()+'.txt');
+								myhomeworkRef.putString(storedMsg).then(function(snapshot) {
+								console.log('恭喜成功上傳完成進階作業QQQ');})
+								});
+							</script>
+					</div>	
+				</div> 
+			</div> 
+			<div id="footer">
+			</div> 
+		</div>
+	</body>
+</html>
